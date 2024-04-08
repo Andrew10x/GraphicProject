@@ -1,9 +1,9 @@
-﻿using CompGraphics.Objects.Math;
+﻿using CompGraphics.Objects.MathObjects;
 
 namespace CompGraphics.Objects.Shapes;
 
 public interface IShape
 {
-    public double MinDistance(Point point);
-    public Point HasIntersection(Point start, Vector ray);
+    public double MinDistance(CPoint point);
+    public CPoint HasIntersection(CPoint start, CVector ray);
 }

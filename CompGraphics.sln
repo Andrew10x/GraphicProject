@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompGraphics", "CompGraphics\CompGraphics.csproj", "{72735C89-73CB-47FE-92F9-9BDD6E4626DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompGraphics", "CompGraphics\CompGraphics.csproj", "{3B7C90C5-B5B1-42A4-A2B7-25CC25CD3B80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompGraphicsTests", "CompGraphicsTests\CompGraphicsTests.csproj", "{8EB7593E-A290-45F4-8F60-56711B15331C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{72735C89-73CB-47FE-92F9-9BDD6E4626DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72735C89-73CB-47FE-92F9-9BDD6E4626DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72735C89-73CB-47FE-92F9-9BDD6E4626DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72735C89-73CB-47FE-92F9-9BDD6E4626DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B7C90C5-B5B1-42A4-A2B7-25CC25CD3B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B7C90C5-B5B1-42A4-A2B7-25CC25CD3B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B7C90C5-B5B1-42A4-A2B7-25CC25CD3B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B7C90C5-B5B1-42A4-A2B7-25CC25CD3B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB7593E-A290-45F4-8F60-56711B15331C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB7593E-A290-45F4-8F60-56711B15331C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB7593E-A290-45F4-8F60-56711B15331C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB7593E-A290-45F4-8F60-56711B15331C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
