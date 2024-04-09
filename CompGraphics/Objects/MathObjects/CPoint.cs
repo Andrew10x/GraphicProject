@@ -1,5 +1,6 @@
 ﻿namespace CompGraphics.Objects.MathObjects;
 using System;
+
 public class CPoint
 {
     public double X { get; }
