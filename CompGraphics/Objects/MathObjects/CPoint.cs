@@ -40,4 +40,9 @@ public class CPoint
                Math.Abs(Z - point2.Z) < eps;
     }
 
+    public double MinDistance(CPoint point)
+    {
+        return Math.Sqrt((point.X - X)*(point.X - X) + (point.Y - Y)*(point.Y - Y) + (point.Z - Z)*(point.Z - Z));
+    }
+
 }

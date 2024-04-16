@@ -9,7 +9,7 @@ public class Plane: IShape
         return 1.9;
     }
 
-    public CPoint HasIntersection(CPoint start, CVector ray)
+    public CPoint? HasIntersection(CPoint start, CVector ray)
     {
         return new CPoint(1, 2, 3);
     }
