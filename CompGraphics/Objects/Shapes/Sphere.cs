@@ -1,9 +1,7 @@
 ﻿using CompGraphics.Objects.MathObjects;
 
 namespace CompGraphics.Objects.Shapes;
-
 using System;
-
 public class Sphere: IShape
 {
     public double Radius { get; }
