@@ -18,7 +18,7 @@ public class Screen
         Cells[i, j] = ch;
     }
     
-    public void Draw()
+    public void Show()
     {
         for (var i = 0; i < Height; i++)
         {
@@ -28,5 +28,10 @@ public class Screen
             } 
             Console.WriteLine();
         }
+    }
+
+    public void ClearScreen()
+    {
+        Cells = new char[Height, Width];
     }
 }

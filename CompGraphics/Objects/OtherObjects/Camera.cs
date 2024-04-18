@@ -5,14 +5,15 @@ namespace CompGraphics.Objects.OtherObjects;
 
 public class Camera
 {
-    public CPoint Start { get;}
+    public CPoint StartPos { get;}
     public CVector Direction { get;}
     public double DistanceToScreen { get;}
 
-    public Camera(CPoint start, CVector direction, double distanceToScreen)
+    public Camera(CPoint startPos, CVector direction, double distanceToScreen)
     {
-        Start = start;
+        StartPos = startPos;
         Direction = direction;
         DistanceToScreen = distanceToScreen;
     }
+    
 }
