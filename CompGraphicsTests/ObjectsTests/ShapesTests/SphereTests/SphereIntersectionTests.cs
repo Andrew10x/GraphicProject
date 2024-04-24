@@ -1,10 +1,10 @@
 ﻿using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.Shapes;
 
-namespace CompGraphicsTests.ObjectsTests.ShapesTests;
+namespace CompGraphicsTests.ObjectsTests.ShapesTests.SphereTests;
 
 [TestFixture]
-public class SphereTests
+public class SphereIntersectionTests
 {
     public static IEnumerable<TestCaseData> HasIntersectionData
     {

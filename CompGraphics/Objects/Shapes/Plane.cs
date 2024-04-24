@@ -24,6 +24,8 @@ public class Plane: IShape
 
     public CPoint? HasIntersection(CPoint rayStart, CVector ray)
     {
+        if (ray.DotProduct(Normal) == 0)
+            return null;
         var t = -(D + rayStart.Z * Normal.Z + rayStart.Y * Normal.Y + rayStart.X * Normal.X) /
                 (ray.Z * Normal.Z + ray.Y * Normal.Y + ray.X * Normal.X);
         return rayStart + ray * t;

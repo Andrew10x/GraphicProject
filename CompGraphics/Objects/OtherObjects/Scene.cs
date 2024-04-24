@@ -12,10 +12,10 @@ public class Scene
     
     public Scene()
     {
-        Screen = new Screen(24, 24);
+        Screen = new Screen(22, 22);
 
         var cameraStartPos = new CPoint(0, 0, 0);
-        const double distFromCameraToScreen = 9.0;
+        const double distFromCameraToScreen = 10.0;
         var cameraDirection = new CVector(0, 0, 1);
         
         Camera = new Camera(
@@ -60,6 +60,40 @@ public class Scene
 
         }
 
+        Screen.Show();
+    }
+    
+    public void RayTracing(Sphere sphere, CVector lightSource)
+    {
+        Screen.ClearScreen();
+        
+        foreach (var cell in GetScreenCells())
+        {
+            
+            var intersection = sphere.HasIntersection(Camera.StartPos, cell.clCenter - Camera.StartPos);
+            
+            if (intersection != null)
+            {
+                var n = (cell.clCenter - Camera.StartPos).MakeUnitVector().DotProduct(lightSource);
+                var ch = n switch
+                {
+                    < 0 => ' ',
+                    >= 0 and <= 0.2 => '.',
+                    > 0.2 and <= 0.5 => '*',
+                    > 0.5 and <= 0.8 => 'O',
+                    > 0.8 => '#',
+                    _ => throw new Exception("Ray Tracing switch out of range")
+                };
+
+                Screen.SetCell(cell.i, cell.j, ch);
+
+            }
+            else
+            {
+                Screen.SetCell(cell.i, cell.j, ' ');
+            }
+        }
+        
         Screen.Show();
     }
 }
