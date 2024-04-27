@@ -13,7 +13,8 @@ public class ProgramStart
 {
     public static void Main(string[] args)
     {
-        MainWork();
+        //MainWork();
+        Work2();
     }
 
     private static void MainWork()
@@ -28,5 +29,14 @@ public class ProgramStart
         
         var l = new List<IShape>() { sphere, sphere2 };
         scene.RayTracingNearest(l, new CVector(3, -2, 1));
+    }
+
+    private static void Work2()
+    {
+        var scene = new Scene();
+        var plane = new Plane(new CVector(1, 0, 0).MakeUnitVector(), new CPoint(1, 2, 3));
+        scene.RayTracing(plane);
+        
+        
     }
 }

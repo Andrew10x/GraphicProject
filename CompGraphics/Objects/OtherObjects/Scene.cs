@@ -62,6 +62,10 @@ public class Scene
         
         foreach (var cell in GetScreenCells())
         {
+            if (cell.i == 1 && cell.j == 1)
+            {
+                int a = 1;
+            }
             var intersection = shape.HasIntersection(Camera.StartPos, cell.clCenter - Camera.StartPos);
             char ch = ' ';
             if(intersection != null) 

@@ -10,11 +10,11 @@ public class PlaneMinDistanceTests
     {
         get
         {
-            yield return new TestCaseData(new Plane(new CVector(1, 0, 0), 4, new CPoint(1, 2, 3)),
-                new CPoint(10, 12, 15), 14);
+            yield return new TestCaseData(new Plane(new CVector(1, 0, 0),  new CPoint(1, 2, 3)),
+                new CPoint(10, 12, 15), 9);
             
-            yield return new TestCaseData(new Plane(new CVector(1, 0, 0), 4, new CPoint(1, 2, 3)),
-                new CPoint(5, 4, 7), 9);
+            yield return new TestCaseData(new Plane(new CVector(1, 0, 0),  new CPoint(1, 2, 3)),
+                new CPoint(5, 4, 7), 4);
 
         }
     }

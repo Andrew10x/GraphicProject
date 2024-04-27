@@ -10,11 +10,11 @@ public class Plane: IShape
         
     public CPoint Point { get; }
 
-    public Plane(CVector normal, Double d, CPoint point)
+    public Plane(CVector normal, CPoint point)
     {
         Normal = normal;
-        D = d;
         Point = point;
+        D = -(normal.X*point.X + normal.Y*point.Y + normal.Z*point.Z);
     }
     public double MinDistance(CPoint point)
     {
@@ -24,10 +24,10 @@ public class Plane: IShape
 
     public CPoint? HasIntersection(CPoint rayStart, CVector ray)
     {
-        if (ray.DotProduct(Normal) == 0)
+        if (ray.DotProduct(Normal)  <= 1e-6)
             return null;
-        var t = -(D + rayStart.Z * Normal.Z + rayStart.Y * Normal.Y + rayStart.X * Normal.X) /
-                (ray.Z * Normal.Z + ray.Y * Normal.Y + ray.X * Normal.X);
-        return rayStart + ray * t;
-    }
+        
+        var t = -(D + rayStart.Z * Normal.Z + rayStart.Y * Normal.Y + rayStart.X * Normal.X) / ray.DotProduct(Normal);
+            return rayStart + ray * t;
+        }
 }

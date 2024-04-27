@@ -11,11 +11,11 @@ public class PlaneIntersectionTests
         get
         {
             yield return new TestCaseData(new CPoint(-1, 0, 0), new CVector(1, 0, 0),
-                new Plane(new CVector(1, 0, 0), 5, new CPoint(0, 0, 0)),
+                new Plane(new CVector(1, 0, 0), new CPoint(0, 0, 0)),
             new CPoint(-5, 0, 0));
             
             yield return new TestCaseData(new CPoint(-1, 0, 0), new CVector(1, 1, 0).MakeUnitVector(),
-                new Plane(new CVector(1, 0, 0), 5, new CPoint(0, 0, 0)),
+                new Plane(new CVector(1, 0, 0), new CPoint(0, 0, 0)),
                 new CPoint(-5, -4, 0));
         }
     }
@@ -34,10 +34,10 @@ public class PlaneIntersectionTests
         get
         {
             yield return new TestCaseData(new CPoint(-1, 2, 4), new CVector(0, 1, 0).MakeUnitVector(),
-                new Plane(new CVector(1, 0, 0), 0, new CPoint(0, 0, 0)));
+                new Plane(new CVector(1, 0, 0), new CPoint(0, 0, 0)));
             
             yield return new TestCaseData(new CPoint(-1, 2, 4), new CVector(0, 5, 7).MakeUnitVector(),
-                new Plane(new CVector(1, 0, 0), 0, new CPoint(-10, -10, -10)));
+                new Plane(new CVector(1, 0, 0), new CPoint(-10, -10, -10)));
         }
     }
 

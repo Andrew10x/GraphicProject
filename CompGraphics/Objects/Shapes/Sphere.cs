@@ -38,9 +38,15 @@ public class Sphere: IShape
             
         var t1 = (Math.Sqrt(D) - b) / (2 * a);
         var t2 = (- Math.Sqrt(D) - b) / (2 * a);
-        if (Math.Abs(t1) < Math.Abs(t2)) 
+        if (Math.Abs(t1) < Math.Abs(t2))
+        {
+            if (t1 < 0)
+                return null;
             return rayStart + ray*t1;
-        
+        }
+
+        if (t2 < 0)
+            return null;
         return rayStart + ray*t2;
         }
 }
