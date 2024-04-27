@@ -28,6 +28,27 @@ public class Screen
             } 
             Console.WriteLine();
         }
+        Console.WriteLine();
+    }
+
+    public void Show2()
+    {
+        for (var i = 0; i < Height; i++)
+        {
+            Console.Write("{");
+            for (var j = 0; j < Width; j++)
+            {
+                if(j != Width -1)
+                    Console.Write("'" + Cells[i, j] + "'" + ", ");
+                else
+                    Console.Write("'" + Cells[i, j] + "'" + " ");
+            } 
+            if(i != Height -1)
+                Console.WriteLine("},");
+            else
+                Console.WriteLine('}');
+        }
+        Console.WriteLine();
     }
 
     public void ClearScreen()

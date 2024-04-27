@@ -16,14 +16,17 @@ public class ProgramStart
         MainWork();
     }
 
-    public static void MainWork()
+    private static void MainWork()
     {
         var scene = new Scene();
             
         var sphere = new Sphere(12, new CPoint(0, 0, 24));
-            
-        scene.RayTracing(sphere);
+        var sphere2 = new Sphere(14, new CPoint(0, 0, 30));
         
-        scene.RayTracing(sphere, new CVector(-3, -2, 1));
+        scene.RayTracing(sphere2);
+        scene.RayTracing(sphere2, new CVector(-3, -2, 1));
+        
+        var l = new List<IShape>() { sphere, sphere2 };
+        scene.RayTracingNearest(l, new CVector(3, -2, 1));
     }
 }

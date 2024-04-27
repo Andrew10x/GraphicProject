@@ -24,6 +24,16 @@ public class Scene
             distFromCameraToScreen);
         
     }
+
+    public Scene(int width, int height, double distFromCameraToScreen, CPoint cameraStartPos, CVector cameraDirection)
+    {
+        Screen = new Screen(width, height);
+
+        Camera = new Camera(
+            cameraStartPos,
+            cameraDirection,
+            distFromCameraToScreen);
+    }
     
     public List<(CPoint clCenter, int i, int j)> GetScreenCells()
     {
@@ -46,13 +56,13 @@ public class Scene
         return clCenters;
     }
     
-    public void RayTracing(Sphere sphere)
+    public void RayTracing(IShape shape)
     {
         Screen.ClearScreen();
         
         foreach (var cell in GetScreenCells())
         {
-            var intersection = sphere.HasIntersection(Camera.StartPos, cell.clCenter - Camera.StartPos);
+            var intersection = shape.HasIntersection(Camera.StartPos, cell.clCenter - Camera.StartPos);
             char ch = ' ';
             if(intersection != null) 
                 ch = '#';
@@ -63,14 +73,14 @@ public class Scene
         Screen.Show();
     }
     
-    public void RayTracing(Sphere sphere, CVector lightSource)
+    public void RayTracing(IShape shape, CVector lightSource)
     {
         Screen.ClearScreen();
         
         foreach (var cell in GetScreenCells())
         {
             
-            var intersection = sphere.HasIntersection(Camera.StartPos, cell.clCenter - Camera.StartPos);
+            var intersection = shape.HasIntersection(Camera.StartPos, cell.clCenter - Camera.StartPos);
             
             if (intersection != null)
             {
@@ -95,5 +105,13 @@ public class Scene
         }
         
         Screen.Show();
+    }
+
+    public IShape RayTracingNearest(List<IShape> shapes, CVector lightSource)
+    {
+        shapes.Sort((s1, s2) => s1.MinDistance(Camera.StartPos).CompareTo(s2.MinDistance(Camera.StartPos)));
+        var shape = shapes.First();
+        RayTracing(shape, lightSource);
+        return shape;
     }
 }
