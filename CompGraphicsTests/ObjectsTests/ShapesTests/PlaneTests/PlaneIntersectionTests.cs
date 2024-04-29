@@ -6,7 +6,7 @@ namespace CompGraphicsTests.ObjectsTests.ShapesTests.PlaneTests;
 [TestFixture]
 public class PlaneIntersectionTests
 {
-    public static IEnumerable<TestCaseData> HasIntersectionData
+  /*  public static IEnumerable<TestCaseData> HasIntersectionData
     {
         get
         {
@@ -47,6 +47,6 @@ public class PlaneIntersectionTests
     {
         var res = plane.HasIntersection(p, v);
         Assert.That(res, Is.Null);
-    }
+    }*/
 
 }

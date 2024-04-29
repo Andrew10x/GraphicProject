@@ -5,6 +5,7 @@ using System.Security.AccessControl;
 using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.OtherObjects;
 using CompGraphics.Objects.Shapes;
+using System.Globalization;
 using Microsoft.VisualBasic;
 
 namespace CompGraphics.Main; 
@@ -14,10 +15,14 @@ public class ProgramStart
     public static void Main(string[] args)
     {
         //MainWork();
-        Work2();
+        //Work2();
+        //String s = "0.14922";
+        //double d = Convert.ToDouble(s);
+        double d = Convert.ToDouble("855.65", CultureInfo.InvariantCulture);
+        Console.Write(d);
     }
 
-    private static void MainWork()
+    /*private static void MainWork()
     {
         var scene = new Scene();
             
@@ -38,5 +43,5 @@ public class ProgramStart
         scene.RayTracing(plane);
         
         
-    }
+    }*/
 }

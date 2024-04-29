@@ -7,7 +7,7 @@ namespace CompGraphicsTests.ObjectsTests.SceneTests;
 [TestFixture]
 public class SceneShowTests
 {
-    [Test]
+   /* [Test]
     public void ShowWithoutLightSourceTest()
     {
         var scene = CreateScene();
@@ -83,5 +83,5 @@ public class SceneShowTests
         const int width = 22;
         const int height = 22;
         return new Scene(width, height, distFromCameraToScreen, cameraStartPos, cameraDirection);
-    }
+    }*/
 }

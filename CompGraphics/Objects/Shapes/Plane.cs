@@ -1,4 +1,5 @@
 ﻿using CompGraphics.Objects.MathObjects;
+using CompGraphics.Results;
 
 namespace CompGraphics.Objects.Shapes;
 using System;
@@ -22,12 +23,12 @@ public class Plane: IShape
                 Math.Sqrt(Normal.X * Normal.X + Normal.Y * Normal.Y + Normal.Z * Normal.Z);
     }
 
-    public CPoint? HasIntersection(CPoint rayStart, CVector ray)
+    public IntersectionResult? HasIntersection(CPoint rayStart, CVector ray)
     {
         if (ray.DotProduct(Normal)  <= 1e-6)
             return null;
         
         var t = -(D + rayStart.Z * Normal.Z + rayStart.Y * Normal.Y + rayStart.X * Normal.X) / ray.DotProduct(Normal);
-            return rayStart + ray * t;
+            return new IntersectionResult(rayStart + ray * t, Normal, t);
         }
 }

@@ -1,7 +1,9 @@
 ﻿using CompGraphics.Objects.MathObjects;
+using CompGraphics.Objects.Shapes;
+using CompGraphics.Results;
 
-namespace CompGraphics.Objects.Shapes;
-using System;
+
+
 public class Sphere: IShape
 {
     public double Radius { get; }
@@ -18,7 +20,7 @@ public class Sphere: IShape
         return Math.Abs(Center.MinDistance(point) - Radius);
     }
 
-    public CPoint? HasIntersection(CPoint rayStart, CVector ray)
+    public IntersectionResult? HasIntersection(CPoint rayStart, CVector ray)
     {
         var k = rayStart - Center;
         var a = ray.DotProduct(ray);
@@ -26,27 +28,24 @@ public class Sphere: IShape
         var c = k.DotProduct(k) - Radius * Radius;
         var D = b * b - 4 * a * c;
         
-        if (D < 0.0d)
-        { 
-            return null;
+        switch (D)
+        {
+            case < 0.0d:
+                return null;
+            case 0:
+            {
+                var t = (- b) / (2 * a);
+                return new IntersectionResult(rayStart + ray * t, (rayStart + ray * t) - Center, t);
+            }
         }
-        if (D == 0)
-        { 
-            var t = (- b) / (2 * a);
-            return rayStart + ray * t;
-        }
-            
+
         var t1 = (Math.Sqrt(D) - b) / (2 * a);
         var t2 = (- Math.Sqrt(D) - b) / (2 * a);
         if (Math.Abs(t1) < Math.Abs(t2))
         {
-            if (t1 < 0)
-                return null;
-            return rayStart + ray*t1;
+            return t1 < 0 ? null : new IntersectionResult(rayStart + ray * t1, (rayStart + ray * t1) - Center, t1);
         }
 
-        if (t2 < 0)
-            return null;
-        return rayStart + ray*t2;
-        }
+        return t2 < 0 ? null : new IntersectionResult(rayStart + ray * t2, (rayStart + ray * t2) - Center, t2);
+    }
 }

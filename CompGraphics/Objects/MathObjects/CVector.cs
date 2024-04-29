@@ -29,6 +29,10 @@ public class CVector
         return new CVector(v.X * d, v.Y * d, v.Z * d);
     }
     
+    public static CVector operator -(CVector v1) {
+        return new CVector(-1*v1.X, -1*v1.Y, -1*v1.Z);
+    }
+    
     public double DotProduct(CVector vector)
     {
         return X * vector.X + Y * vector.Y + Z * vector.Z;

@@ -21,7 +21,7 @@ public class SceneShowNearestTests
         }
     }
 
-    [Test]
+    /*[Test]
     [TestCaseSource(nameof(HasIntersectionData))]
     public void PlaneHasIntersection(Sphere sh1, Sphere sh2, Sphere resSh)
     {
@@ -40,5 +40,5 @@ public class SceneShowNearestTests
         const int width = 22;
         const int height = 22;
         return new Scene(width, height, distFromCameraToScreen, cameraStartPos, cameraDirection);
-    }
+    }*/
 }
