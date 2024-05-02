@@ -23,7 +23,7 @@ public class Camera
     {
         StartPos = new CPoint(0, 0, 0);
         Direction = new CVector(0, 0, -1);
-        Size = 200;
+        Size = 20;
         Fov = 65;
     }
 
@@ -35,8 +35,8 @@ public class Camera
     private CPoint GetCell(int i, int j)
     {
         var fScale = MathF.Tan(MathF.PI / 180f * Fov / 2);
-        var x = (2 * (i + 0.5f) / Size - 1) * fScale;
-        var y = (1 - 2 * (j + 0.5f) / Size) * fScale;
+        var x = (-1 + 2 * (j + 0.5f) / Size) * fScale;
+        var y = (-2 * (i + 0.5f) / Size + 1) * fScale;
 
         return new CPoint(x, y, Direction.Z);
     }

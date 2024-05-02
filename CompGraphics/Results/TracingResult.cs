@@ -13,5 +13,18 @@ public class TracingResult
     {
         InterRes = interRes;
         LightSource = lightSource;
+        if (interRes != null && lightSource != null)
+        {
+            Darckening = (-LightSource!).DotProduct(interRes.Normal);
+        }
+        else if (interRes == null)
+        {
+            Darckening = -1;
+        }
+        else if (lightSource == null)
+        {
+            Darckening = 0;
+        }
+        
     }
 }
