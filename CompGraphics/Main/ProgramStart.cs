@@ -24,7 +24,7 @@ public class ProgramStart
         //double d = Convert.ToDouble("855.65", CultureInfo.InvariantCulture);
         //Console.Write(d);
 
-        Work();
+        //Work();
     }
 
     private static void Work()

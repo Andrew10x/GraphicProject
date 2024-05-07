@@ -2,7 +2,7 @@
 using CompGraphics.Results;
 
 namespace CompGraphics.Objects.Shapes;
-using System;
+
 public class Plane: IShape
 {
     public CVector Normal { get; }

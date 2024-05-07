@@ -1,5 +1,5 @@
 ﻿namespace CompGraphics.Objects.MathObjects;
-using System;
+
 public class CVector
 {
     public double X { get; }
