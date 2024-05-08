@@ -29,6 +29,9 @@ public class Scene
         {
             for (var j = 0; j < size; j++)
             {
+                var a3 = 5;
+                if (i == 5 && j == 5)
+                    a3 = 5;
                 var ray = Camera.CreateRay(i, j);
                 trRes[i, j] = tracer.RayTrace(Camera.StartPos, ray);
             }

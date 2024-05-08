@@ -6,6 +6,7 @@ using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.OtherObjects;
 using CompGraphics.Objects.Shapes;
 using System.Globalization;
+using System.Net;
 using CompGraphics.Image;
 using CompGraphics.Tracer;
 using CompGraphics.Writer;
@@ -25,6 +26,20 @@ public class ProgramStart
         //Console.Write(d);
 
         //Work();
+        TriangleTest();
+    }
+
+    public static void TriangleTest()
+    {
+        Scene scene = new Scene();
+        //var triangle = new Triangle(new CPoint(-10, 10, 5), new CPoint(10, 10, 5), new CPoint(0, 0, 1),
+        //    new CVector(0, 0, 1), new CVector(0, 0, 1), new CVector(0, 0, 1));
+        var triangle = new Triangle(new CPoint(-5, 0, -8), new CPoint(5, 0, -8), 
+            new CPoint(0, 5, -8), new CVector(0, 0, 1), new CVector(0, 0, 1), new CVector(0, 0, 1));
+        var shapes = new List<IShape> { triangle };
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(0, 1, -1)));
+        var image = new ConsoleImage(res.GetLength(0), res);
+        new ConsoleWriter().Write(image);
     }
 
     private static void Work()
