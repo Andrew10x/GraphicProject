@@ -23,7 +23,7 @@ public class Camera
     {
         StartPos = new CPoint(0, 0, 0);
         Direction = new CVector(0, 0, -1);
-        Size = 20;
+        Size = 50;
         Fov = 65;
     }
 

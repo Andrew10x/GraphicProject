@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Reflection.Metadata;
 using System.Security.AccessControl;
@@ -8,6 +9,7 @@ using CompGraphics.Objects.Shapes;
 using System.Globalization;
 using System.Net;
 using CompGraphics.Image;
+using CompGraphics.Reader;
 using CompGraphics.Tracer;
 using CompGraphics.Writer;
 using Microsoft.VisualBasic;
@@ -26,9 +28,20 @@ public class ProgramStart
         //Console.Write(d);
 
         //Work();
-        TriangleTest();
+        Test3();
     }
 
+    [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH", MessageId = "type: CompGraphics.Objects.MathObjects.CVector; size: 494MB")]
+    public static void Test3()
+    {
+        Scene scene = new Scene();
+        FileReader fr = new FileReader();
+        DataFromFile df = fr.ReadFromFile("D:/objTest/cow.obj");
+        var shapes = df.GetAllTriangles();
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(1, -1, -1).MakeUnitVector()));
+        var image = new ConsoleImage(res.GetLength(0), res);
+        new ConsoleWriter().Write(image);
+    }
     public static void TriangleTest()
     {
         Scene scene = new Scene();
