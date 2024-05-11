@@ -1,4 +1,5 @@
-﻿using CompGraphics.Objects.MathObjects;
+﻿using CompGraphics.Objects;
+using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.Shapes;
 
 namespace CompGraphics.Reader;
@@ -25,5 +26,19 @@ public class DataFromFile
         }
 
         return triangles;
+    }
+    
+    public void Transform(TransformMatrix tm)
+    {
+        foreach (var normal in Normals)
+        {
+            normal.Transform(tm);
+            normal.MakeUnitVector();
+        }
+        
+        foreach (var vertex in Points)
+        {
+            vertex.Transform(tm);
+        }
     }
 }

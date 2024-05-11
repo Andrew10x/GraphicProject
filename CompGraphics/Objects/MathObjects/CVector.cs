@@ -2,9 +2,9 @@
 
 public class CVector
 {
-    public double X { get; }
-    public double Y { get; }
-    public double Z { get; }
+    public double X { get; private set; }
+    public double Y { get; private set; }
+    public double Z { get; private set; }
     
     public CVector(double x, double y, double z)
     {
@@ -62,5 +62,15 @@ public class CVector
     public CVector MakeUnitVector()
     {
         return this * (1 / Length());
+    }
+    
+    public void Transform(TransformMatrix tm)
+    {
+        var x = X;
+        var y = Y;
+        var z = Z;
+        X = tm.Matrix![0,0] * x + tm.Matrix![0,1] * y + tm.Matrix![0,2] * z;
+        Y = tm.Matrix![1,0] * x + tm.Matrix![1,1] * y + tm.Matrix![1,2] * z;
+        Z = tm.Matrix![2,0] * x + tm.Matrix![2,1] * y + tm.Matrix![2,2] * z;
     }
 }
