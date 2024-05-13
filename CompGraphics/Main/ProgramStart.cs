@@ -38,14 +38,21 @@ public class ProgramStart
         FileReader fr = new FileReader();
         DataFromFile df = fr.ReadFromFile("D:/objTest/cow.obj");
         TransformMatrix tm = new TransformMatrix();
+        tm.CreateScaleMatrix(1.4f, 1.4f, 1.4f);
+        df.Transform(tm);
         tm.CreateRotateXMatrix(-90);
         df.Transform(tm);
-        tm.CreateRotateYMatrix(-45);
+        tm.CreateRotateYMatrix(-30);
+        df.Transform(tm);
+        tm.CreateTranslationMatrix(0, 0, -2);
         df.Transform(tm);
         //tm.CreateTranslationMatrix(0, 0, -1);
         //df.Transform(tm);
         var shapes = df.GetAllTriangles();
-        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(0, 0, -1).MakeUnitVector()));
+        //var shapes = new List<IShape>();
+        var sphere = new Sphere(0.2, new CPoint(-0.6, 0.6, -2));
+        shapes.Add(sphere);
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(1, -1, -1).MakeUnitVector()));
         var image = new FileImage(res.GetLength(0), res);
         new FileWriter("D:/objTest/res/testFinal22.ppm").Write(image);
         

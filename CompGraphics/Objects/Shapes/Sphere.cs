@@ -22,6 +22,7 @@ public class Sphere: IShape
 
     public IntersectionResult? HasIntersection(CPoint rayStart, CVector ray)
     {
+
         var k = rayStart - Center;
         var a = ray.DotProduct(ray);
         var b = 2 * ray.DotProduct(k);
@@ -43,9 +44,9 @@ public class Sphere: IShape
         var t2 = (- Math.Sqrt(D) - b) / (2 * a);
         if (Math.Abs(t1) < Math.Abs(t2))
         {
-            return t1 < 0 ? null : new IntersectionResult(rayStart + ray * t1, (rayStart + ray * t1) - Center, t1);
+            return t1 < 0 ? null : new IntersectionResult(rayStart + ray * t1, ((rayStart + ray * t1) - Center).MakeUnitVector(), t1);
         }
 
-        return t2 < 0 ? null : new IntersectionResult(rayStart + ray * t2, (rayStart + ray * t2) - Center, t2);
+        return t2 < 0 ? null : new IntersectionResult(rayStart + ray * t2, ((rayStart + ray * t2) - Center).MakeUnitVector(), t2);
     }
 }
