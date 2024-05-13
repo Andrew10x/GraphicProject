@@ -61,6 +61,10 @@ public class CVector
     
     public CVector MakeUnitVector()
     {
+        var length = Length();
+        X /= length;
+        Y /= length;
+        Z /= length;
         return this * (1 / Length());
     }
     

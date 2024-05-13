@@ -29,7 +29,26 @@ public class ProgramStart
         //Console.Write(d);
 
         //Work();
-        Test3();
+        Test4();
+    }
+
+    public static void Test4()
+    {
+        Scene scene = new Scene();
+        FileReader fr = new FileReader();
+        DataFromFile df = fr.ReadFromFile("D:/objTest/cow.obj");
+        TransformMatrix tm = new TransformMatrix();
+        tm.CreateRotateXMatrix(-90);
+        df.Transform(tm);
+        tm.CreateRotateYMatrix(-45);
+        df.Transform(tm);
+        //tm.CreateTranslationMatrix(0, 0, -1);
+        //df.Transform(tm);
+        var shapes = df.GetAllTriangles();
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(0, 0, -1).MakeUnitVector()));
+        var image = new FileImage(res.GetLength(0), res);
+        new FileWriter("D:/objTest/res/testFinal22.ppm").Write(image);
+        
     }
 
     [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH", MessageId = "type: CompGraphics.Objects.MathObjects.CVector; size: 494MB")]

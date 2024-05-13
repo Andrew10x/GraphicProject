@@ -21,15 +21,15 @@ public class Camera
 
     public Camera()
     {
-        StartPos = new CPoint(0, 0, 0);
+        StartPos = new CPoint(0, 0, 1.5);
         Direction = new CVector(0, 0, -1);
-        Size = 80;
-        Fov = 65;
+        Size = 200;
+        Fov = 60;
     }
 
     public CVector CreateRay(int i, int j)
     {
-        return GetCell(i, j) - StartPos;
+        return GetCell(i, j) - new CPoint(0, 0, 0);// - StartPos;
     }
 
     private CPoint GetCell(int i, int j)
