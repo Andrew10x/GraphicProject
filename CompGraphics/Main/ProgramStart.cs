@@ -51,6 +51,8 @@ public class ProgramStart
         var shapes = df.GetAllTriangles();
         //var shapes = new List<IShape>();
         var sphere = new Sphere(0.2, new CPoint(-0.6, 0.6, -2));
+        var plane = new Plane(new CVector(0, -1, 0), new CPoint(-1, -1, -1));
+        shapes.Add(plane);
         shapes.Add(sphere);
         var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(1, -1, -1).MakeUnitVector()));
         var image = new FileImage(res.GetLength(0), res);

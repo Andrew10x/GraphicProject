@@ -13,7 +13,7 @@ public class Plane: IShape
 
     public Plane(CVector normal, CPoint point)
     {
-        Normal = normal;
+        Normal = normal.MakeUnitVector();
         Point = point;
         D = -(normal.X*point.X + normal.Y*point.Y + normal.Z*point.Z);
     }
@@ -29,6 +29,6 @@ public class Plane: IShape
             return null;
         
         var t = -(D + rayStart.Z * Normal.Z + rayStart.Y * Normal.Y + rayStart.X * Normal.X) / ray.DotProduct(Normal);
-            return new IntersectionResult(rayStart + ray * t, Normal, t);
+            return new IntersectionResult(rayStart + ray * t, -Normal, t);
         }
 }
