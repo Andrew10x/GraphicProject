@@ -1,4 +1,5 @@
 ﻿using CompGraphics.Objects.MathObjects;
+using CompGraphics.ProjConstants;
 
 namespace CompGraphicsTests.ObjectsTests.MathObjectsTests;
 
@@ -78,7 +79,7 @@ public class CVectorTests
     public void DotProduct(CVector v1, CVector v2, Double resV)
     {
         var res = v1.DotProduct(v2);
-        Assert.That(resV, Is.EqualTo(res).Within(0.000000000000001));
+        Assert.That(resV, Is.EqualTo(res).Within(ProjConstants.EPSILON));
     }
     
     public static IEnumerable<TestCaseData> CrossProductData

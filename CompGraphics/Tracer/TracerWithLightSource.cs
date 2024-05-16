@@ -10,10 +10,15 @@ public class TracerWithLightSource: ITracer
     public List<IShape> Shapes { get; }
     public CVector LightSource { get; }
     
-    public TracerWithLightSource(List<IShape> shapes, CVector lightSource)
-    {
-        Shapes = shapes;
+    public TracerWithLightSource(List<IShape> shapes, CVector lightSource, CPoint? rayStartPos = null, bool traceNearest = false)
+    {  
         LightSource = lightSource;
+        if (!traceNearest)
+            Shapes = shapes;
+        else if (traceNearest && rayStartPos != null)
+            Shapes = new List<IShape>() { FindNearestShape(shapes, rayStartPos) };
+        else
+            Shapes = new List<IShape>();
     }
     public TracingResult RayTrace(CPoint rayStartPos, CVector rayDirection)
     {
@@ -44,5 +49,18 @@ public class TracerWithLightSource: ITracer
         }
 
         return new TracingResult(nearIntersect, LightSource);
+    }
+
+    private IShape FindNearestShape(List<IShape> shapes, CPoint rayStartPos)
+    {
+        var minDistShape = shapes[0];
+        for (var i = 1; i < shapes.Count; i++)
+        {
+            var d = shapes[i].MinDistance(rayStartPos);
+            if (minDistShape.MinDistance(rayStartPos) > d)
+                minDistShape = shapes[i];
+        }
+
+        return minDistShape;
     }
 }

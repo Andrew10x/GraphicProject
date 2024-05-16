@@ -1,32 +1,33 @@
 ﻿using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.Shapes;
+using CompGraphics.Results;
 
 namespace CompGraphicsTests.ObjectsTests.ShapesTests.PlaneTests;
 
 [TestFixture]
 public class PlaneIntersectionTests
 {
-  /*  public static IEnumerable<TestCaseData> HasIntersectionData
+    public static IEnumerable<TestCaseData> HasIntersectionData
     {
         get
         {
             yield return new TestCaseData(new CPoint(-1, 0, 0), new CVector(1, 0, 0),
                 new Plane(new CVector(1, 0, 0), new CPoint(0, 0, 0)),
-            new CPoint(-5, 0, 0));
+                new IntersectionResult(new CPoint(0, 0, 0), new CVector(-1, 0, 0), 1));
             
             yield return new TestCaseData(new CPoint(-1, 0, 0), new CVector(1, 1, 0).MakeUnitVector(),
                 new Plane(new CVector(1, 0, 0), new CPoint(0, 0, 0)),
-                new CPoint(-5, -4, 0));
+                new IntersectionResult(new CPoint(0, 1, 0), new CVector(-1, 0, 0), 1.41421356));
         }
     }
 
     [Test]
     [TestCaseSource(nameof(HasIntersectionData))]
-    public void PlaneHasIntersection(CPoint p, CVector v, Plane plane, CPoint intersection)
+    public void PlaneHasIntersection(CPoint p, CVector v, Plane plane, IntersectionResult interRes)
     {
         var res = plane.HasIntersection(p, v);
         Assert.That(res, Is.Not.Null);
-        Assert.That(res!.IsEqual(intersection), Is.True);
+        Assert.That(res!.IsEqual(interRes), Is.True);
     }
     
     public static IEnumerable<TestCaseData> HasNoIntersectionData
@@ -47,6 +48,6 @@ public class PlaneIntersectionTests
     {
         var res = plane.HasIntersection(p, v);
         Assert.That(res, Is.Null);
-    }*/
+    }
 
 }

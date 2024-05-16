@@ -47,7 +47,7 @@ public class CVector
         );
     }
 
-    public bool IsEqual(CVector vector2, double eps = 0.005)
+    public bool IsEqual(CVector vector2, double eps=ProjConstants.ProjConstants.EPSILON)
     {
         return Math.Abs(X - vector2.X) < eps &&
                Math.Abs(Y - vector2.Y) < eps &&

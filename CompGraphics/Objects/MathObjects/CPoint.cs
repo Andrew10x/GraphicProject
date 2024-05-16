@@ -33,7 +33,7 @@ public class CPoint
         Console.WriteLine("(" + X + ", " + Y + ", " + Z + ")");
     }
     
-    public bool IsEqual(CPoint point2, double eps = 0.005)
+    public bool IsEqual(CPoint point2, double eps=ProjConstants.ProjConstants.EPSILON)
     {
         return Math.Abs(X - point2.X) < eps &&
                Math.Abs(Y - point2.Y) < eps &&

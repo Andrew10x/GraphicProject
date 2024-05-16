@@ -29,7 +29,47 @@ public class ProgramStart
         //Console.Write(d);
 
         //Work();
-        Test4();
+        NearestTest();
+    }
+
+    public static void NearestTest()
+    {
+        Scene scene = new Scene();
+        var shapes = new List<IShape>();
+        var sphere = new Sphere(0.2, new CPoint(-0.6, 0.6, -4));
+        var sphere2 = new Sphere(0.2, new CPoint(0.6, -0.6, -3));
+        shapes.Add(sphere);
+        shapes.Add(sphere2);
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(0, 0, -1).MakeUnitVector(),
+            scene.Camera.StartPos, true));
+        var image = new FileImage(res.GetLength(0), res);
+        new FileWriter("D:/objTest/res/rr.ppm").Write(image);
+    }
+
+    public static void Test5()
+    {
+        Scene scene = new Scene();
+        FileReader fr = new FileReader();
+        DataFromFile df = fr.ReadFromFile("D:/objTest/cow.obj");
+        TransformMatrix tm = new TransformMatrix();
+        tm.CreateScaleMatrix(1.4f, 1.4f, 1.4f);
+        df.Transform(tm);
+        tm.CreateRotateXMatrix(-90);
+        df.Transform(tm);
+        tm.CreateRotateYMatrix(-30);
+        df.Transform(tm);
+        tm.CreateTranslationMatrix(0, 0, -2);
+        df.Transform(tm);
+        var shapes = df.GetAllTriangles();
+        //var shapes = new List<IShape>();
+        var sphere = new Sphere(0.2, new CPoint(-0.6, 0.6, -2));
+        var plane = new Plane(new CVector(0, -1, 0), new CPoint(-1, -1, -1));
+        shapes.Add(plane);
+        shapes.Add(sphere);
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(1, -1, -1).MakeUnitVector()));
+        //var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(0, 0, -1).MakeUnitVector()));
+        var image = new ConsoleImage(res.GetLength(0), res);
+        new ConsoleWriter().Write(image);
     }
 
     public static void Test4()
@@ -48,15 +88,20 @@ public class ProgramStart
         df.Transform(tm);
         //tm.CreateTranslationMatrix(0, 0, -1);
         //df.Transform(tm);
-        var shapes = df.GetAllTriangles();
-        //var shapes = new List<IShape>();
-        var sphere = new Sphere(0.2, new CPoint(-0.6, 0.6, -2));
-        var plane = new Plane(new CVector(0, -1, 0), new CPoint(-1, -1, -1));
-        shapes.Add(plane);
-        shapes.Add(sphere);
-        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(1, -1, -1).MakeUnitVector()));
+        //var shapes = df.GetAllTriangles();
+        var shapes = new List<IShape>();
+        //var sphere = new Sphere(0.2, new CPoint(-0.6, 0.6, -2));
+        //var plane = new Plane(new CVector(0, -1, 0), new CPoint(-1, -1, -1));
+        var triangle = new Triangle(new CPoint(-5, 5, -10), new CPoint(5, 5, -10), new CPoint(0, -2, -10),
+            //new CVector(1, 1, 0.2).MakeUnitVector(), new CVector(1, 0, 0.8).MakeUnitVector(), new CVector(0, 0, 1));
+            new CVector(0, 0, -1).MakeUnitVector(), new CVector(0, 0, -1).MakeUnitVector(), new CVector(0, 0, -1));
+        shapes.Add(triangle);
+        //shapes.Add(plane);
+        //shapes.Add(sphere);
+        //var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(1, -1, -1).MakeUnitVector()));
+        var res = scene.Trace(new TracerWithLightSource(shapes, new CVector(0, 0, -1).MakeUnitVector()));
         var image = new FileImage(res.GetLength(0), res);
-        new FileWriter("D:/objTest/res/testFinal22.ppm").Write(image);
+        new FileWriter("D:/objTest/res/rr.ppm").Write(image);
         
     }
 

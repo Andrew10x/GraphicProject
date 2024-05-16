@@ -1,5 +1,6 @@
 ﻿using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.Shapes;
+using CompGraphics.Results;
 
 namespace CompGraphicsTests.ObjectsTests.ShapesTests.SphereTests;
 
@@ -10,30 +11,27 @@ public class SphereIntersectionTests
     {
         get
         {
-            yield return new TestCaseData(new CPoint(2, 3, 5),
-                new CVector(0, 0, 1),
-                new Sphere(2, new CPoint(2, 4, 10)),
-                new CPoint(2, 3, 8.2679));
-            
+
             yield return new TestCaseData(new CPoint(-1, -1, -1),
                 new CVector(1, 1, 0).MakeUnitVector(),
                 new Sphere(1, new CPoint(0, 0, 0)),
-                new CPoint(0, 0, -1));
+                new IntersectionResult(new CPoint(0, 0, -1), new CVector(0, 0, -1), 1.41421356));
             
-            yield return new TestCaseData(new CPoint(4, 1, 4),
-                new CVector(0, 1, 1).MakeUnitVector(),
-                new Sphere(1, new CPoint(4, 2, 5)),
-                new CPoint(4, 1.29, 4.29));
+            yield return new TestCaseData(new CPoint(0, 0, 0),
+                new CVector(0, 0, -1).MakeUnitVector(),
+                new Sphere(1, new CPoint(0, 0, -5)),
+                new IntersectionResult(new CPoint(0, 0, -4), new CVector(0, 0, 1), 4));
+
         }
     }
 
-   /* [Test]
+   [Test]
     [TestCaseSource(nameof(HasIntersectionData))]
-    public void SphereHasIntersection(CPoint p, CVector v, Sphere sph, CPoint intersection)
+    public void SphereHasIntersection(CPoint p, CVector v, Sphere sph, IntersectionResult interRes)
     {
         var res = sph.HasIntersection(p, v);
         Assert.That(res, Is.Not.Null);
-        Assert.That(res!.IsEqual(intersection), Is.True);
+        Assert.That(res!.IsEqual(interRes), Is.True);
     }
     
     public static IEnumerable<TestCaseData> HasNoIntersectionData
@@ -62,6 +60,4 @@ public class SphereIntersectionTests
         var res = sph.HasIntersection(p, v);
         Assert.That(res, Is.Null);
     }
-    
-    */
 }
