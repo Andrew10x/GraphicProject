@@ -27,6 +27,14 @@ public class Camera
         Fov = 60;
     }
 
+    public Camera(int size)
+    {
+        StartPos = new CPoint(0, 0, 0);
+        Direction = new CVector(0, 0, -1);
+        Size = size;
+        Fov = 60;
+    }
+
     public CVector CreateRay(int i, int j)
     {
         return GetCell(i, j) - StartPos;

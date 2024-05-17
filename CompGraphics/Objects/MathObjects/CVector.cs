@@ -65,7 +65,7 @@ public class CVector
         X /= length;
         Y /= length;
         Z /= length;
-        return this * (1 / Length());
+        return this;
     }
     
     public void Transform(TransformMatrix tm)

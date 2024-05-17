@@ -15,6 +15,11 @@ public class Scene
         Camera = new Camera();
     }
 
+    public Scene(int size)
+    {
+        Camera = new Camera(size);
+    }
+
     public Scene(CPoint cameraStartPos, CVector cameraDirection, int size, int fov)
     {
         Camera = new Camera(cameraStartPos, cameraDirection, size, fov);

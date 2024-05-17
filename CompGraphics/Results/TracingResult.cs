@@ -9,7 +9,7 @@ public class TracingResult
     public IntersectionResult? InterRes { get; }
     public CVector? LightSource { get; }
 
-    public TracingResult(IntersectionResult? interRes, CVector? lightSource)
+    public TracingResult(IntersectionResult? interRes, CVector? lightSource, bool noLightSource = false)
     {
         InterRes = interRes;
         LightSource = lightSource;
@@ -23,7 +23,10 @@ public class TracingResult
         }
         else if (lightSource == null)
         {
-            Darckening = 0;
+            if (noLightSource)
+                Darckening = 1;
+            else
+                Darckening = 0;
         }
         
     }

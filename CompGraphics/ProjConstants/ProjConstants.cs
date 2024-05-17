@@ -2,5 +2,5 @@
 
 public static class ProjConstants
 {
-    public const double EPSILON = 0.00000001;
+    public const double EPSILON = 0.0000001;
 }

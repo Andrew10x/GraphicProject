@@ -10,12 +10,12 @@ public class TracerWithLightSource: ITracer
     public List<IShape> Shapes { get; }
     public CVector LightSource { get; }
     
-    public TracerWithLightSource(List<IShape> shapes, CVector lightSource, CPoint? rayStartPos = null, bool traceNearest = false)
+    public TracerWithLightSource(List<IShape> shapes, CVector lightSource, CPoint? rayStartPos = null)
     {  
         LightSource = lightSource;
-        if (!traceNearest)
+        if (rayStartPos == null)
             Shapes = shapes;
-        else if (traceNearest && rayStartPos != null)
+        else if (shapes.Count >= 1)
             Shapes = new List<IShape>() { FindNearestShape(shapes, rayStartPos) };
         else
             Shapes = new List<IShape>();
