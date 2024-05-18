@@ -10,6 +10,7 @@ public class Plane: IShape
     public double D { get; }
         
     public CPoint Point { get; }
+    
 
     public Plane(CVector normal, CPoint point)
     {
@@ -25,10 +26,12 @@ public class Plane: IShape
 
     public IntersectionResult? HasIntersection(CPoint rayStart, CVector ray)
     {
-        if (ray.DotProduct(Normal)  <= 1e-6)
-            return null;
-        
+        //if (ray.DotProduct(Normal)  <= 1e-6)
+          //  return null;
+        CVector v = -Normal;
         var t = -(D + rayStart.Z * Normal.Z + rayStart.Y * Normal.Y + rayStart.X * Normal.X) / ray.DotProduct(Normal);
-            return new IntersectionResult(rayStart + ray * t, -Normal, t);
+        if (t <= 1e-6)
+            return null;
+        return new IntersectionResult(rayStart + ray * t, v, t);
         }
 }

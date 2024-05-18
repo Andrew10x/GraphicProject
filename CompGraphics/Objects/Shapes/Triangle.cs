@@ -1,4 +1,5 @@
-﻿using CompGraphics.Objects.MathObjects;
+﻿using CompGraphics.Objects;
+using CompGraphics.Objects.MathObjects;
 using CompGraphics.Objects.Shapes;
 using CompGraphics.ProjConstants;
 using CompGraphics.Results;
@@ -9,9 +10,9 @@ public class Triangle: IShape
     public CPoint P2 { get; }
     public CPoint P3 { get; }
     
-    public CVector N1 { get; }
-    public CVector N2 { get; }
-    public CVector N3 { get; }
+    public CVector N1 { get; set; }
+    public CVector N2 { get; set; }
+    public CVector N3 { get; set; }
 
     public Triangle(CPoint p1, CPoint p2, CPoint p3, CVector n1, CVector n2, CVector n3)
     {
@@ -61,5 +62,19 @@ public class Triangle: IShape
 
         return distance <= ProjConstants.EPSILON ? null :
             new IntersectionResult(start + ray * distance,N1 * (1 - u - v) + N2 * u + N3 * v, distance);
+    }
+    
+    public void Transform(TransformMatrix transformation)
+    {
+        P1.Transform(transformation);
+        P2.Transform(transformation);
+        P3.Transform(transformation);
+
+        N1.Transform(transformation);
+        N1 = N1.MakeUnitVector();
+        N2.Transform(transformation);
+        N2 = N2.MakeUnitVector();
+        N3.Transform(transformation);
+        N3 = N3.MakeUnitVector();
     }
 }
